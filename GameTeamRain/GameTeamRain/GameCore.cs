@@ -35,5 +35,30 @@
         {
 
         }
+
+        public bool ReCalculateMatrix(string direction)
+        {
+
+        }
+        public bool CalculateRightDirection()
+        {
+
+        }
+
+        public bool CalculateLeftDirection()
+        {
+
+        }
+
+        public bool CalculateUpDirection()
+        {
+        
+        }
+
+        public bool CalculateDownDirection()
+        {
+
+        }
+
     }
 }
