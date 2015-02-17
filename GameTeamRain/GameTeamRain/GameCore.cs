@@ -23,7 +23,7 @@
             {
                 for (int j = 0; j < coreMatrix.GetLength(1); j++)
                 {
-                    if (coreMatrix[i, j] == 2018)
+                    if (coreMatrix[i, j] == 2048)
                     {
                         isWon = true;
                     }
@@ -36,23 +36,23 @@
         public bool IsGameOver()
         {
             bool gameLost = true;
-            for (int i = 0; i < coreMatrix.GetLength(0); i++)
+            for (int i = 0; i < this.coreMatrix.GetLength(0); i++)
             {
-                for (int j = 0; j < coreMatrix.GetLength(1); j++)
+                for (int j = 0; j < this.coreMatrix.GetLength(1); j++)
                 {
-                    if (coreMatrix[i, j] == 0)
+                    if (this.coreMatrix[i, j] == 0)
                     {
                         gameLost = false;
                         return gameLost;
                     }
                 }
             }
-            for (int i = 0; i < coreMatrix.GetLength(0); i++)
+            for (int i = 0; i < this.coreMatrix.GetLength(0); i++)
             {
                 int col = 0;
-                for (int j = 1; j < coreMatrix.GetLength(1); j++)
+                for (int j = 1; j < this.coreMatrix.GetLength(1); j++)
                 {
-                    if (coreMatrix[i, col] == coreMatrix[i, j])
+                    if (this.coreMatrix[i, col] == this.coreMatrix[i, j])
                     {
                         gameLost = false;
                         return gameLost;
@@ -63,12 +63,12 @@
                     }
                 }
             }
-            for (int k = 0; k < coreMatrix.GetLength(1); k++)
+            for (int k = 0; k < this.coreMatrix.GetLength(1); k++)
             {
                 int row = 0;
-                for (int j = 1; j < coreMatrix.GetLength(0); j++)
+                for (int j = 1; j < this.coreMatrix.GetLength(0); j++)
                 {
-                    if (coreMatrix[row, k] == coreMatrix[j, k])
+                    if (this.coreMatrix[row, k] == this.coreMatrix[j, k])
                     {
                         gameLost = false;
                         return gameLost;
