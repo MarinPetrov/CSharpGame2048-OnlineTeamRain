@@ -18,12 +18,69 @@
         }
         public bool IsGameWon()
         {
-            
+            bool isWon = false;
+            for (int i = 0; i < coreMatrix.GetLength(0); i++)
+            {
+                for (int j = 0; j < coreMatrix.GetLength(1); j++)
+                {
+                    if (coreMatrix[i, j] == 2018)
+                    {
+                        isWon = true;
+                    }
+                }
+            }
+
+            return isWon;            
         }
 
         public bool IsGameOver()
         {
+            bool gameLost = true;
+            for (int i = 0; i < coreMatrix.GetLength(0); i++)
+            {
+                for (int j = 0; j < coreMatrix.GetLength(1); j++)
+                {
+                    if (coreMatrix[i, j] == 0)
+                    {
+                        gameLost = false;
+                        return gameLost;
+                    }
+                }
+            }
+            for (int i = 0; i < coreMatrix.GetLength(0); i++)
+            {
+                int col = 0;
+                for (int j = 1; j < coreMatrix.GetLength(1); j++)
+                {
+                    if (coreMatrix[i, col] == coreMatrix[i, j])
+                    {
+                        gameLost = false;
+                        return gameLost;
+                    }
+                    else
+                    {
+                        col++;
+                    }
+                }
+            }
+            for (int k = 0; k < coreMatrix.GetLength(1); k++)
+            {
+                int row = 0;
+                for (int j = 1; j < coreMatrix.GetLength(0); j++)
+                {
+                    if (coreMatrix[row, k] == coreMatrix[j, k])
+                    {
+                        gameLost = false;
+                        return gameLost;
+                    }
+                    else
+                    {
+                        row++;
+                    }
+                }
+            }
 
+            return gameLost;
         }
 
         public void addNewNumber()

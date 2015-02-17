@@ -4,3 +4,5 @@ C:\Users\poli\Desktop\C# 2 Online Team Rain\CSharpGame2048-OnlineTeamRain\GameTe
 C:\Users\poli\Desktop\C# 2 Online Team Rain\CSharpGame2048-OnlineTeamRain\GameTeamRain\GameTeamRain\obj\Debug\GameTeamRain.csprojResolveAssemblyReference.cache
 C:\Users\poli\Desktop\C# 2 Online Team Rain\CSharpGame2048-OnlineTeamRain\GameTeamRain\GameTeamRain\obj\Debug\GameTeamRain.exe
 C:\Users\poli\Desktop\C# 2 Online Team Rain\CSharpGame2048-OnlineTeamRain\GameTeamRain\GameTeamRain\obj\Debug\GameTeamRain.pdb
+D:\VS\C#2N\CSharpGame2048-OnlineTeamRain\CSharpGame2048-OnlineTeamRain\GameTeamRain\GameTeamRain\bin\Debug\GameTeamRain.exe.config
+D:\VS\C#2N\CSharpGame2048-OnlineTeamRain\CSharpGame2048-OnlineTeamRain\GameTeamRain\GameTeamRain\obj\Debug\GameTeamRain.exe
