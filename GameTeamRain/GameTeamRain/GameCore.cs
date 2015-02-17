@@ -5,23 +5,34 @@
     class GameCore
     {
         private ushort[,] coreMatrix;
-        private Random randomNumber = new Random();
+        private Random randomNumber;
         public GameCore()
         {
             this.coreMatrix = new ushort[4, 4];
+            this.randomNumber = new Random();
             InitCoreMatrix();
         }
 
-        public void InitCoreMatrix()
+        private void InitCoreMatrix()
         {
-
+           int row = (ushort)(randomNumber.Next(0,5));
+           int col = (ushort)(randomNumber.Next(0,5));
+           if (row+col<4)
+           {
+               this.coreMatrix[row, col] = 2;
+           }
+           else
+           {
+               this.coreMatrix[row, col] = 4;
+           }
+                     
         }
         public bool IsGameWon()
         {
             bool isWon = false;
-            for (int i = 0; i < coreMatrix.GetLength(0); i++)
+            for (int i = 0; i < this.coreMatrix.GetLength(0); i++)
             {
-                for (int j = 0; j < coreMatrix.GetLength(1); j++)
+                for (int j = 0; j < this.coreMatrix.GetLength(1); j++)
                 {
                     if (coreMatrix[i, j] == 2048)
                     {
@@ -115,7 +126,7 @@
             }
             return isChangeCoreMatrix;
         }
-        public bool CalculateDirection(ushort[,] currentMatrix)
+        private bool CalculateDirection(ushort[,] currentMatrix)
         {
             bool isChange = false;
             for (int row = 0; row < currentMatrix.GetLength(0); row++)
