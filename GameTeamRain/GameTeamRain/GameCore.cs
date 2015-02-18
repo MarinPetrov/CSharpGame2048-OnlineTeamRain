@@ -15,17 +15,17 @@
 
         private void InitCoreMatrix()
         {
-           int row = (ushort)(randomNumber.Next(0,5));
-           int col = (ushort)(randomNumber.Next(0,5));
-           if (row+col<4)
-           {
-               this.coreMatrix[row, col] = 2;
-           }
-           else
-           {
-               this.coreMatrix[row, col] = 4;
-           }
-                     
+            int row = (ushort)(randomNumber.Next(0, 4));
+            int col = (ushort)(randomNumber.Next(0, 4));
+            if (row + col < 4)
+            {
+                this.coreMatrix[row, col] = 2;
+            }
+            else
+            {
+                this.coreMatrix[row, col] = 4;
+            }
+
         }
         public bool IsGameWon()
         {
@@ -41,7 +41,7 @@
                 }
             }
 
-            return isWon;            
+            return isWon;
         }
 
         public bool IsGameOver()
@@ -94,9 +94,34 @@
             return gameLost;
         }
 
-        public void addNewNumber()
+        public void AddNewNumber()
         {
+            List<ushort[]> randomPositions = new List<ushort[]>();
+            for (int row = 0; row < this.coreMatrix.GetLength(0); row++)
+            {
+                for (int col = 0; col < this.coreMatrix.GetLength(1); col++)
+                {
+                    if (this.coreMatrix[row, col] == 0)
+                    {
+                        randomPositions.Add(new ushort[] { (ushort)row, (ushort)col });
+                    }
+                }
+            }
+            if (randomPositions.Count != 0)
+            {
+                int number = this.randomNumber.Next(randomPositions.Count);
+                ushort x = randomPositions[number][0];
+                ushort y = randomPositions[number][1];
 
+                if (this.randomNumber.Next(10) < 6)
+                {
+                    this.coreMatrix[x, y] = 2;
+                }
+                else
+                {
+                    this.coreMatrix[x, y] = 4;
+                }
+            }
         }
 
         public void PrintMatrix()
@@ -185,6 +210,13 @@
                 {
                     currentMatrix[row, position] = currentMatrix[row, currentMatrix.GetLength(1) - 1];
                     currentMatrix[row, currentMatrix.GetLength(1) - 1] = 0;
+                    isChange = true;
+                }
+                if ((currentMatrix[row, currentMatrix.GetLength(1) - 3] == 0) && (currentMatrix[row, currentMatrix.GetLength(1) - 2] != 0))
+                {
+                    currentMatrix[row, position] = currentMatrix[row, currentMatrix.GetLength(1) - 2];
+                    currentMatrix[row, currentMatrix.GetLength(1) - 2] = 0;
+                    isChange = true;
                 }
             }
             return isChange;
@@ -192,6 +224,7 @@
         public bool CalculateRightDirection()
         {
             ushort[,] currentMatrix = new ushort[this.coreMatrix.GetLength(0), this.coreMatrix.GetLength(1)];
+            //rotate matrix to left
             for (int row = 0; row < this.coreMatrix.GetLength(0); row++)
             {
                 for (int col = 0; col < this.coreMatrix.GetLength(1); col++)
@@ -201,12 +234,12 @@
             }
 
             bool isChange = CalculateDirection(currentMatrix);
-
+            //rotate matrix to right
             for (int row = 0; row < this.coreMatrix.GetLength(0); row++)
             {
                 for (int col = 0; col < this.coreMatrix.GetLength(1); col++)
                 {
-                    this.coreMatrix[row, col] = currentMatrix[row, this.coreMatrix.GetLength(1)-col-1];
+                    this.coreMatrix[row, col] = currentMatrix[row, this.coreMatrix.GetLength(1) - col - 1];
                 }
             }
             return isChange;
@@ -214,28 +247,29 @@
 
         public bool CalculateLeftDirection()
         {
-           bool isChange = CalculateDirection(this.coreMatrix);
-           return isChange;
-            
+            bool isChange = CalculateDirection(this.coreMatrix);
+            return isChange;
+
         }
 
         public bool CalculateUpDirection()
         {
             ushort[,] currentMatrix = new ushort[this.coreMatrix.GetLength(0), this.coreMatrix.GetLength(1)];
+            //rotate matrix to left
             for (int row = 0; row < this.coreMatrix.GetLength(0); row++)
             {
                 for (int col = 0; col < this.coreMatrix.GetLength(1); col++)
                 {
-                    currentMatrix[row,col]=this.coreMatrix[col,this.coreMatrix.GetLength(1)-row-1];
+                    currentMatrix[row, col] = this.coreMatrix[col, this.coreMatrix.GetLength(1) - row - 1];
                 }
             }
             bool isChange = CalculateDirection(currentMatrix);
-
+            //rotate matrix to up
             for (int row = 0; row < this.coreMatrix.GetLength(0); row++)
             {
                 for (int col = 0; col < this.coreMatrix.GetLength(1); col++)
                 {
-                    this.coreMatrix[col, this.coreMatrix.GetLength(1) - row - 1] =currentMatrix[row, col];
+                    this.coreMatrix[col, this.coreMatrix.GetLength(1) - row - 1] = currentMatrix[row, col];
                 }
             }
 
@@ -244,18 +278,19 @@
 
         public bool CalculateDownDirection()
         {
-            ushort[,] currentMatrix = new ushort[this.coreMatrix.GetLength(0), this.coreMatrix.GetLength(1)];
 
+            ushort[,] currentMatrix = new ushort[this.coreMatrix.GetLength(0), this.coreMatrix.GetLength(1)];
+            //rotate matrix to left 
             for (int row = 0; row < this.coreMatrix.GetLength(0); row++)
             {
                 for (int col = 0; col < this.coreMatrix.GetLength(1); col++)
                 {
-                    currentMatrix[row, col] = this.coreMatrix[this.coreMatrix.GetLength(1) - col - 1,row];
+                    currentMatrix[row, col] = this.coreMatrix[this.coreMatrix.GetLength(1) - col - 1, row];
                 }
             }
 
             bool isChange = CalculateDirection(currentMatrix);
-
+            //rotate matrix to right
             for (int row = 0; row < this.coreMatrix.GetLength(0); row++)
             {
                 for (int col = 0; col < this.coreMatrix.GetLength(1); col++)
