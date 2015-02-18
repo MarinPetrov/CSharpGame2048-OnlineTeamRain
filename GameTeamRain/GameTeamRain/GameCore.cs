@@ -113,7 +113,7 @@
                 ushort x = randomPositions[number][0];
                 ushort y = randomPositions[number][1];
 
-                if (this.randomNumber.Next(10) < 6)
+                if (this.randomNumber.Next(10) < 7)
                 {
                     this.coreMatrix[x, y] = 2;
                 }
@@ -126,10 +126,50 @@
 
         public void PrintMatrix()
         {
+            Console.CursorTop = 1;
+            for (int row = 0; row < this.coreMatrix.GetLength(0); row++)
+            {
+                Console.CursorLeft = 5;
 
+                for (int col = 0; col < this.coreMatrix.GetLength(1); col++)
+                {
+                    int num = this.coreMatrix[row, col];
+                    switch (num)
+                    {
+                        case 0: Console.ForegroundColor = ConsoleColor.DarkGray;
+                            break;
+                        case 2: Console.ForegroundColor = ConsoleColor.Cyan;
+                            break;
+                        case 4: Console.ForegroundColor = ConsoleColor.Magenta;
+                            break;
+                        case 8: Console.ForegroundColor = ConsoleColor.Red;
+                            break;
+                        case 16: Console.ForegroundColor = ConsoleColor.Green;
+                            break;
+                        case 32: Console.ForegroundColor = ConsoleColor.Yellow;
+                            break;
+                        case 64: Console.ForegroundColor = ConsoleColor.Yellow;
+                            break;
+                        case 128: Console.ForegroundColor = ConsoleColor.DarkCyan;
+                            break;
+                        case 256: Console.ForegroundColor = ConsoleColor.Cyan;
+                            break;
+                        case 512: Console.ForegroundColor = ConsoleColor.DarkMagenta;
+                            break;
+                        case 1024: Console.ForegroundColor = ConsoleColor.Magenta;
+                            break;
+                        default: Console.ForegroundColor = ConsoleColor.Red;
+                            break;
+                    }
+
+                    Console.Write("{0,5}", (this.coreMatrix[row, col]));
+
+                }
+                Console.CursorTop += 2;
+            }
         }
 
-        public bool ReCalculateMatrix()
+        public void ReCalculateMatrix()
         {
             bool isChangeCoreMatrix = false;
             while (!isChangeCoreMatrix)
@@ -149,7 +189,10 @@
                         break;
                 }
             }
-            return isChangeCoreMatrix;
+            if (isChangeCoreMatrix)
+            {
+                AddNewNumber();
+            }
         }
         private bool CalculateDirection(ushort[,] currentMatrix)
         {
@@ -184,7 +227,6 @@
                                     currentMatrix[row, position] = currentCell;
                                     position++;
                                     col = cell - 1;
-                                    isChange = true;
                                     break;
                                 }
 
