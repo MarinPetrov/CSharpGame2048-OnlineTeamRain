@@ -133,36 +133,40 @@
 
                 for (int col = 0; col < this.coreMatrix.GetLength(1); col++)
                 {
+                    Console.BackgroundColor = ConsoleColor.White;
                     int num = this.coreMatrix[row, col];
                     switch (num)
                     {
-                        case 0: Console.ForegroundColor = ConsoleColor.DarkGray;
+                        case 0: Console.ForegroundColor = ConsoleColor.White;
                             break;
-                        case 2: Console.ForegroundColor = ConsoleColor.Cyan;
+                        case 2: Console.ForegroundColor = ConsoleColor.Red;
                             break;
                         case 4: Console.ForegroundColor = ConsoleColor.Magenta;
                             break;
-                        case 8: Console.ForegroundColor = ConsoleColor.Red;
+                        case 8: Console.ForegroundColor = ConsoleColor.DarkYellow;
                             break;
-                        case 16: Console.ForegroundColor = ConsoleColor.Green;
+                        case 16: Console.ForegroundColor = ConsoleColor.DarkGreen;
                             break;
-                        case 32: Console.ForegroundColor = ConsoleColor.Yellow;
+                        case 32: Console.ForegroundColor = ConsoleColor.DarkBlue;
                             break;
-                        case 64: Console.ForegroundColor = ConsoleColor.Yellow;
+                        case 64: Console.ForegroundColor = ConsoleColor.DarkRed;
                             break;
                         case 128: Console.ForegroundColor = ConsoleColor.DarkCyan;
                             break;
-                        case 256: Console.ForegroundColor = ConsoleColor.Cyan;
+                        case 256: Console.ForegroundColor = ConsoleColor.DarkGray;
                             break;
                         case 512: Console.ForegroundColor = ConsoleColor.DarkMagenta;
                             break;
-                        case 1024: Console.ForegroundColor = ConsoleColor.Magenta;
+                        case 1024: Console.ForegroundColor = ConsoleColor.Black;
                             break;
                         default: Console.ForegroundColor = ConsoleColor.Red;
                             break;
                     }
 
-                    Console.Write("{0,5}", (this.coreMatrix[row, col]));
+                    Console.Write("{0,4}", (this.coreMatrix[row, col]));
+                    Console.ForegroundColor = ConsoleColor.Black;
+                    Console.BackgroundColor = ConsoleColor.Black;
+                    Console.Write("|");
 
                 }
                 Console.CursorTop += 2;
