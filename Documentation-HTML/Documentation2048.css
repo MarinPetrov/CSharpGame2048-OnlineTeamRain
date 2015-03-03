@@ -1,0 +1,39 @@
+﻿body{
+    background-color:#82b517;
+}
+
+h1{
+    text-align:center;
+    background-color:#3896a0;
+}
+
+ul{
+    background-color:#3896a0;
+    padding:2px;
+    width:300px;
+}
+
+ul li{
+    background-color:#82b517;
+    margin-bottom:2px;
+    width:150px;
+    border-radius:3px;
+    padding-left:3px;
+    list-style-type:none;
+}
+
+a {
+    text-decoration:none;
+    color:#ffffff;
+}
+ul li a:hover{
+    background-color:#e97f7f;
+}
+section{
+    color:#fff;
+    background-color:#3896a0;
+}
+
+#telerik{
+    margin-left:485px;
+}
